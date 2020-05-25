@@ -15,7 +15,7 @@ public class fctGui extends JFrame  {
 
     public void imagen() {
 
-        JFrame marco = new JFrame();
+        JFrame marco = new JFrame("Safa - Ntra. Sra. del los Reyes");
         marco.setLayout(new BorderLayout(5, 10));
         JPanel panelPrincipal = new JPanel();
         panelPrincipal.setLayout(new BorderLayout(5, 10));
@@ -82,14 +82,14 @@ public class fctGui extends JFrame  {
         JPanel gestionBotonera2=new JPanel();
         JPanel gestionDatos1=new JPanel();
         JPanel gestionDatos2=new JPanel();
+        gestionDatos2.setLayout(new BorderLayout(5,10));
         JPanel gestionDatos3=new JPanel();
         JPanel gestionDatos4=new JPanel();
         JPanel gestionDatos5=new JPanel();
         JPanel gestionDatos6=new JPanel();
-
-
         JPanel gestionTabla=new JPanel();
 
+        /////////creacion elementos pantalla 1
         JLabel codigoEmpresa= new JLabel("Código de empresa: ");
         JTextField codigoEmpresaText =new JTextField(5);
         JLabel nombreEmpresa= new JLabel("Nombre de la empresa: ");
@@ -118,23 +118,19 @@ public class fctGui extends JFrame  {
         JLabel telefono =new JLabel("Telefono del tutor");
         JTextField telefonoText= new JTextField(9);
         panelSecu2.setLayout(new BorderLayout(5,10));
-        panelSecu2.setSize(700,800);
-/////////////////////////
+        JLabel titulo1= new JLabel("GESTIÓN DE LAS EMPRESAS DEL PROGRAMA FCT");
+
+
+/////////////////////////Colocación de los elementos de la pantalla 1
         panelSecu2.add(gestiontras3,BorderLayout.NORTH);
         panelSecu2.add(gestiontras,BorderLayout.CENTER);
         panelSecu2.add(gestiontras1,BorderLayout.SOUTH);
-
         gestiontras.setLayout(new BorderLayout(5,10));
-       // gestiontras1.setLayout(new BorderLayout(5,10));
+        gestiontras3.add(titulo1);
 
         gestionDatos1.setLayout( new FlowLayout( FlowLayout.LEFT,5,30));
-
         gestionBotonera.setLayout( new FlowLayout( FlowLayout.CENTER,5,10));
-
-
-
         gestiontras.add(gestionDatos1,BorderLayout.CENTER);
-
         gestionDatos1.add(codigoEmpresa);
         gestionDatos1.add(codigoEmpresaText);
         gestionDatos1.add(nombreEmpresa);
@@ -158,30 +154,34 @@ public class fctGui extends JFrame  {
         gestionDatos1.add(mailText);
         gestionDatos1.add(telefono);
         gestionDatos1.add(telefonoText);
-
         gestiontras.add(gestionBotonera,BorderLayout.SOUTH);
+
         gestionBotonera.add(insertar);
         gestionBotonera.add(modificar);
         gestionBotonera.add(borrar);
 
 
         //////// colocar la tabla
-        JTable tablaM= new JTable(5,5);
+        JTable tablaM= new JTable();
         tablaM.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
         DefaultTableModel model = new DefaultTableModel();
+        tablaM.setModel(model);
 
         JScrollPane pane = new JScrollPane(tablaM);
 
+
         pane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         pane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-        //  pane.setSize(500,150);
 
-
-        tablaM.setModel(model);
 
         gestiontras1.add(gestionDatos2);
         gestionDatos2.setLayout(new BorderLayout(5, 10));
+
+        JLabel resultadoConsulta= new JLabel(" ");
+        gestionDatos2.add(gestionDatos3,BorderLayout.NORTH);
+        gestionDatos3.add(resultadoConsulta);
+
         gestionDatos2.add(pane,BorderLayout.CENTER);
         pane.setPreferredSize(new java.awt.Dimension(500, 150));
 
@@ -232,17 +232,13 @@ public class fctGui extends JFrame  {
 
 
 
-
-
-
-
-
 //////////////////////////////////////////////////////////////////////////////////
 
 
         gestionE.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 laminas.show(panelPrincipal, "2");
+
 
             }
         });
@@ -275,17 +271,21 @@ public class fctGui extends JFrame  {
                     String APE_TUTOR= apellidoTutorText.getText();
                     String MAIL_TUTOR= mailText.getText();
                     String TLF_TUTOR= telefonoText.getText();
-                    tabla.inserta(COD_EMPRESA,NOM_EMPRESA,CIF,LOCALI,CP,TIP_JORNADA,DNI_TUTOR,NOM_TUTOR,APE_TUTOR,MAIL_TUTOR,TLF_TUTOR);
+
+                   resultadoConsulta.setText(tabla.inserta(COD_EMPRESA,NOM_EMPRESA,CIF,LOCALI,CP,TIP_JORNADA,DNI_TUTOR,NOM_TUTOR,APE_TUTOR,MAIL_TUTOR,TLF_TUTOR));
+
+
+
+
 
 
                 } catch(NumberFormatException | SQLException ex){
-                    codigoEmpresaText.setText("solo puedes escribir numeros");
+                    codigoEmpresaText.setText("Solo puedes escribir numeros");
 
 
                 }
-                /*
-                fctImp con =new fctImp();
-                Object[] rowData = new Object[11];
+
+                model.setRowCount(0);
                 try {
                     ArrayList<emp>lista =con.consulta();
                     for (int i=0; i<lista.size(); i++) {
@@ -304,13 +304,11 @@ public class fctGui extends JFrame  {
                         model.addRow(rowData);
 
                     }
-
-
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
 
-*/
+
 
             }
 
@@ -332,7 +330,7 @@ public class fctGui extends JFrame  {
                     String APE_TUTOR= apellidoTutorText.getText();
                     String MAIL_TUTOR= mailText.getText();
                     String TLF_TUTOR= telefonoText.getText();
-                    tabla.modfica(COD_EMPRESA,NOM_EMPRESA,CIF,LOCALI,CP,TIP_JORNADA,DNI_TUTOR,NOM_TUTOR,APE_TUTOR,MAIL_TUTOR,TLF_TUTOR);
+                    resultadoConsulta.setText(tabla.modfica(COD_EMPRESA,NOM_EMPRESA,CIF,LOCALI,CP,TIP_JORNADA,DNI_TUTOR,NOM_TUTOR,APE_TUTOR,MAIL_TUTOR,TLF_TUTOR));
 
 
                 } catch(NumberFormatException | SQLException ex){
@@ -340,6 +338,33 @@ public class fctGui extends JFrame  {
 
 
                 }
+
+                model.setRowCount(0);
+
+                try {
+                    ArrayList<emp>lista =con.consulta();
+                    for (int i=0; i<lista.size(); i++) {
+                        rowData[0]=Integer.parseInt(lista.get(i).getCodigo());
+                        rowData[1]= lista.get(i).getNom_emp();
+                        rowData[2]=lista.get(i).getCif();
+                        rowData[3]=lista.get(i).getLocali();
+                        rowData[4]=lista.get(i).getCp();
+                        rowData[5]=lista.get(i).getTip_jonada();
+                        rowData[6]=lista.get(i).getDni_tutor();
+                        rowData[7]=lista.get(i).getNom_tutor();
+                        rowData[8]=lista.get(i).getApe_tutor();
+                        rowData[9]=lista.get(i).getMail_tutor();
+                        rowData[10]=lista.get(i).getTlf_tutor();
+
+                        model.addRow(rowData);
+
+
+                    }
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+
+
 
             }
 
@@ -351,12 +376,37 @@ public class fctGui extends JFrame  {
                     fctImp tabla =new fctImp();
                     String COD_EMPRESA= codigoEmpresaText.getText();
 
-                    tabla.borra(COD_EMPRESA);
+                    resultadoConsulta.setText(tabla.borra(COD_EMPRESA));
 
 
                 } catch(NumberFormatException | SQLException ex){
                     codigoEmpresaText.setText("solo puedes escribir numeros");
 
+                }
+
+                model.setRowCount(0);
+
+                try {
+                    ArrayList<emp>lista =con.consulta();
+                    for (int i=0; i<lista.size(); i++) {
+                        rowData[0]=Integer.parseInt(lista.get(i).getCodigo());
+                        rowData[1]= lista.get(i).getNom_emp();
+                        rowData[2]=lista.get(i).getCif();
+                        rowData[3]=lista.get(i).getLocali();
+                        rowData[4]=lista.get(i).getCp();
+                        rowData[5]=lista.get(i).getTip_jonada();
+                        rowData[6]=lista.get(i).getDni_tutor();
+                        rowData[7]=lista.get(i).getNom_tutor();
+                        rowData[8]=lista.get(i).getApe_tutor();
+                        rowData[9]=lista.get(i).getMail_tutor();
+                        rowData[10]=lista.get(i).getTlf_tutor();
+
+                        model.addRow(rowData);
+
+
+                    }
+                } catch (SQLException e) {
+                    e.printStackTrace();
                 }
 
             }

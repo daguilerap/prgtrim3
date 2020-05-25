@@ -27,10 +27,10 @@ public class fctImp {
             conexBd.setAutoCommit(false);
             encapsulaCons.executeQuery();
             conexBd.commit();
-            mensaje = "registro insertado";
+            mensaje = "Registro insertado";
         } catch (SQLException se) {
             System.out.println(se.getMessage());
-            mensaje = "error, no has insertado los datos correctamente";
+            mensaje = "Error, no has insertado los datos correctamente";
         } catch (ClassNotFoundException cnfe) {
             System.out.println(cnfe.getMessage());
             mensaje = "error";
@@ -68,7 +68,7 @@ public class fctImp {
             mensaje = "Registro Modificado";
         } catch (SQLException se) {
             System.out.println(se.getMessage());
-            mensaje = "error, no has insertado los datos correctamente";
+            mensaje = "Error, no has insertado los datos correctamente";
         } catch (ClassNotFoundException cnfe) {
             System.out.println(cnfe.getMessage());
         } finally {
@@ -99,7 +99,7 @@ public class fctImp {
             mensaje = "Registro borrado";
         } catch (SQLException se) {
             System.out.println(se.getMessage());
-            mensaje = "error, no has insertado los datos correctamente";
+            mensaje = "Error, no has insertado los datos correctamente";
         } catch (ClassNotFoundException cnfe) {
             System.out.println(cnfe.getMessage());
         } finally {
@@ -150,55 +150,7 @@ public class fctImp {
         return lista;
     }
 
-    public void muestra(){
 
-        DefaultTableModel model = new DefaultTableModel();
-
-
-        Object[] columnsName = new Object[11];
-
-        columnsName[0] = "COD_EMPRESA";
-        columnsName[1] = "NOM_EMPRESA";
-        columnsName[2] = "CIF";
-        columnsName[3] = "LOCALI";
-        columnsName[4] = "CP";
-        columnsName[5] = "TIP_JORNADA";
-        columnsName[6] = "DNI_TUTOR";
-        columnsName[7] = "NOM_TUTOR";
-        columnsName[8] = "APE_TUTOR";
-        columnsName[9] = "MAIL_TUTOR";
-        columnsName[10] = "TLF_TUTOR";
-
-        model.setColumnIdentifiers(columnsName);
-
-
-        fctImp con =new fctImp();
-        Object[] rowData = new Object[11];
-        try {
-            ArrayList<emp>lista =con.consulta();
-            for (int i=0; i<lista.size(); i++) {
-                rowData[0]=Integer.parseInt(lista.get(i).getCodigo());
-                rowData[1]= lista.get(i).getNom_emp();
-                rowData[2]=lista.get(i).getCif();
-                rowData[3]=lista.get(i).getLocali();
-                rowData[4]=lista.get(i).getCp();
-                rowData[5]=lista.get(i).getTip_jonada();
-                rowData[6]=lista.get(i).getDni_tutor();
-                rowData[7]=lista.get(i).getNom_tutor();
-                rowData[8]=lista.get(i).getApe_tutor();
-                rowData[9]=lista.get(i).getMail_tutor();
-                rowData[10]=lista.get(i).getTlf_tutor();
-
-                model.addRow(rowData);
-
-            }
-
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-    }
 
 
 }
