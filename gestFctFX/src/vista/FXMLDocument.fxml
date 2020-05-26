@@ -21,7 +21,7 @@
                            <image>
                               <Image url="@images/nuevo_logo_SAFA_H.png" />
                            </image></ImageView>
-                        <Label layoutX="302.0" layoutY="143.0" text="SAFA Ntra. Señora de los Reyes">
+                        <Label layoutX="363.0" layoutY="144.0" text="GESTIÓN SAFA FCT">
                            <font>
                               <Font size="23.0" />
                            </font>

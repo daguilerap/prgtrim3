@@ -3,7 +3,6 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/David/Documents/NetBeansProjects/gestFct/src/gestfct/GestFct.java</file>
             <file>file:/C:/Users/David/Documents/NetBeansProjects/gestFct/src/modelo/Alumno.java</file>
             <file>file:/C:/Users/David/Documents/NetBeansProjects/gestFct/src/modelo/emp.java</file>
             <file>file:/C:/Users/David/Documents/NetBeansProjects/gestFct/src/controlador/FXMLDocumentController.java</file>
@@ -11,6 +10,7 @@
             <file>file:/C:/Users/David/Documents/NetBeansProjects/gestFct/src/modelo/BinaryCreator.java</file>
             <file>file:/C:/Users/David/Documents/NetBeansProjects/gestFct/src/modelo/tutoresSAFA.xml</file>
             <file>file:/C:/Users/David/Documents/NetBeansProjects/gestFct/src/gestfct/FXMLDocumentController.java</file>
+            <file>file:/C:/Users/David/Documents/NetBeansProjects/gestFct/src/controlador/GestFct.java</file>
             <file>file:/C:/Users/David/Documents/NetBeansProjects/gestFct/src/gestfct/ObservableListArrayList.java</file>
         </group>
     </open-files>

@@ -526,7 +526,7 @@ public class fctImp {
     ClassNotFoundException se)
     {
         System.out.println(se.getMessage());
-        varitext="\tEl alumno ya está asginado";
+        varitext="El alumno ya está asginado";
     }finally{
          conexBd.close();
      }
